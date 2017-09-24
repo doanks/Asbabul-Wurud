@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "433921949473",
+    "firebase_url": "https://asbabul-wurud.firebaseio.com",
+    "project_id": "asbabul-wurud",
+    "storage_bucket": "asbabul-wurud.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433921949473:android:a1d4ca46a285bcae",
+        "android_client_info": {
+          "package_name": "com.rosnia.asbabulwurud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433921949473-15qclmt3djptdt41fam1vm7d07ap30vt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9bB7jQEOMLeh0z--7DgVkcjrWfAj2bqY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
