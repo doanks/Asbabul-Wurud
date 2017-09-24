@@ -50,7 +50,8 @@ public class DatabaseHadis : MonoBehaviour {
 	void Awake() {
 		instance = this;
 
-		FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://asbabul-wurud.firebaseio.com/");
+		//FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://asbabul-wurud.firebaseio.com/");
+		FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://hadis-c469a.firebaseio.com/");
 		baseRef = FirebaseDatabase.DefaultInstance.RootReference;
 
 		hadisList.Clear ();
