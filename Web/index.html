@@ -1,0 +1,149 @@
+<html>
+	<head>
+		<title>Input Data Asbabul Wurud </title>
+			<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+			<script>
+			  // Initialize Firebase
+			  var config = {
+				apiKey: "AIzaSyAiyscxPY8TpXDdWUag1d1A-siZY1abBo0",
+				authDomain: "hadis-c469a.firebaseapp.com",
+				databaseURL: "https://hadis-c469a.firebaseio.com",
+				projectId: "hadis-c469a",
+				storageBucket: "hadis-c469a.appspot.com",
+				messagingSenderId: "687287239883"
+			  };
+			  firebase.initializeApp(config);
+			</script>
+			
+			<style>
+				/* The Modal (background) */
+				.modal {
+					display: none; /* Hidden by default */
+					position: fixed; /* Stay in place */
+					z-index: 1; /* Sit on top */
+					padding-top: 100px; /* Location of the box */
+					left: 0;
+					top: 0;
+					width: 100%; /* Full width */
+					height: 100%; /* Full height */
+					overflow: auto; /* Enable scroll if needed */
+					background-color: rgb(0,0,0); /* Fallback color */
+					background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+				}
+
+				/* Modal Content */
+				.modal-content {
+					background-color: #fefefe;
+					margin: auto;
+					padding: 20px;
+					border: 1px solid #888;
+					width: 80%;
+				}
+
+				/* The Close Button */
+				.close {
+					color: #aaaaaa;
+					float: right;
+					font-size: 28px;
+					font-weight: bold;
+				}
+
+				.close:hover,
+				.close:focus {
+					color: #000;
+					text-decoration: none;
+					cursor: pointer;
+				}
+				
+				li{
+					margin: 5px 0;
+				}
+			</style>
+	</head>
+	
+	<body>
+		<input type="button" value="New Data" onclick="new_data();"/>
+		
+		<!-- New Data Modal -->
+		<div id="new_modal" class="modal">
+
+		  <!-- Modal content -->
+		  <div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Tambah Data</p>	
+			<table>
+				<tr>
+					<td>Kategori</td>
+					<td><input type="text" id="kategori" /></td>
+				</tr>
+				<tr>
+					<td>Perawi</td>
+					<td><input type="text" id="perawi" /></td>
+				</tr>
+				<tr>
+					<td>Title</td>
+					<td><input type="text" id="title" /></td>
+				</tr>
+				<tr>
+					<td>Isi Hadis</td>
+					<td><input type="text" id="teks" /></td>
+				</tr>
+				<tr>
+					<td>Ayat</td>
+					<td><input type="file" value="upload" id="fileButton"</td>
+				</tr>
+				<tr>
+					<td><input type="button" value="Save" onclick="save_data();"/></td>
+					<td><progress value="0" max="100" id="uploader">0%</progress></td>
+				</tr>
+			</table>
+		  </div>
+		</div>
+		 
+		<div id="edit_modal" class="modal">
+ 
+		  <div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Edit Data</p>
+				<table>
+				<tr>
+					<td>Title</td>
+					<td><input type="text" id="edit_title" /></td>
+				</tr>
+				<tr>
+					<td>Kategori</td>
+					<td><input type="text" id="edit_kategori" /></td>
+				</tr>
+				<tr>
+					<td>Perawi</td>
+					<td><input type="text" id="edit_perawi" /></td>
+				</tr>
+				<tr>
+					<td>Isi Hadis</td>
+					<td><input type="text" id="edit_teks" /></td>
+				</tr>
+				<tr>
+					<td>Ayat</td>
+					<td><input type="file" value="upload" id="fileButton"</td>
+				</tr>
+				<tr>
+					<td>
+					<input type="button" id="btn_update" value="Save"/>
+					<input type="button" id="btn_delete" value="Delete"/>
+					</td>
+				</tr>
+			</table>
+		  </div>
+		</div>
+		
+		<h3> Data Hadis Asbabul Wurud </h3>
+
+			<p>
+				<ol id=listData>
+				</ol>
+			</p>
+
+		<script id="footer" src="app.js"></script>
+
+	</body>
+</html>
