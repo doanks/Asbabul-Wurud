@@ -9,15 +9,16 @@ using System;
 
 [System.Serializable]
 public class Hadis {
-	public int id;
+	//public int id;
 	public string kategori;
 	public string title;
 	public string perawi;
 	public string teks;
 	public string url_ayat;
 
-	public Hadis (int id, string kategori, string title, string perawi, string teks, string url_ayat) {
-		this.id = id;
+	//public Hadis (int id, string kategori, string title, string perawi, string teks, string url_ayat) {
+	public Hadis (string kategori, string title, string perawi, string teks, string url_ayat) {
+		//this.id = id;
 		this.kategori = kategori;
 		this.title = title;
 		this.perawi = perawi;
@@ -26,7 +27,7 @@ public class Hadis {
 	}
 
 	public Hadis (IDictionary<string, object> dict) {
-		this.id = Convert.ToInt32(dict ["id"]);
+		//this.id = Convert.ToInt32(dict ["id"]);
 		this.kategori = dict ["kategori"].ToString ();
 		this.title = dict ["title"].ToString ();
 		this.perawi = dict ["perawi"].ToString ();
