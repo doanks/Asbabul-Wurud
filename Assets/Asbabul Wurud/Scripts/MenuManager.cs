@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour {
 
 	public static MenuManager instance;
 
+	public GameObject fade;
 	public Animator[] btnAnim;
 	public ScrollRect scrl;
 	public Text headerText;
@@ -42,16 +43,23 @@ public class MenuManager : MonoBehaviour {
 		headerText.text = ht;
 	}
 
+	bool triggerAnim;
 	public void ButtonMenu () {
-		StartCoroutine (DelayAnim ());
+		
+		if (!triggerAnim) {
+			triggerAnim = true;
+			StartCoroutine (DelayAnim ());
+		}
 	}
 
 	IEnumerator DelayAnim () {
+		fade.SetActive (tagShow);
 		for (int i = 0; i < btnAnim.Length; i++){
 			btnAnim[i].SetBool ("show", tagShow);
 			yield return new WaitForSeconds (0.05f);
 		}
 		tagShow = !tagShow;
+		triggerAnim = false;
 	}
 
 	public void ShowDetail (int id) {

@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Asbabul Wurud/Scene.unity
+    guid: bdace6d3e78f5a94da094f8cb362aacb
