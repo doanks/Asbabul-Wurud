@@ -21,7 +21,7 @@ public class CategoryControl : MonoBehaviour {
 
 		circleMenu.SetActive (false);
 		
-		TagManager.instance.DestroyList ();
+		ListScroll.instance.DestroyList ();
 		dbase.tempList.Clear ();
 		int count = 0;
 
@@ -29,7 +29,7 @@ public class CategoryControl : MonoBehaviour {
 
 			if (dbase.hadisList [i].kategori.Contains (cat)) {
 
-				TagManager.instance.tittleCount++;
+				ListScroll.instance.tittleCount++;
 				GameObject temp = Instantiate(item, Vector2.zero, Quaternion.identity) as GameObject;
 				temp.transform.SetParent(scroller);
 				temp.transform.GetComponent<RectTransform>().localScale = Vector3.one;
@@ -41,7 +41,7 @@ public class CategoryControl : MonoBehaviour {
 				count++;
 			}
 		}
-		TagManager.instance.ChangePosScroller ();
+		ListScroll.instance.ChangePosScroller ();
 		windowItem.SetActive (true);
 	}
 }

@@ -22,36 +22,36 @@ public class Searching : MonoBehaviour {
 		db.tempList.Clear ();
 		int count = 0;
 
-		TagManager.instance.DestroyList ();
+		ListScroll.instance.DestroyList ();
+
+		//HASIL INPUTAN DIUBAH JADI HURUF KECIL
 		string inputtext = inputf.text.ToLower ();
-		for(int i=0; i<db.hadisList.Count; i++){
 
-			string dbtitle = db.hadisList [i].title.ToLower();
-			string rawi = db.hadisList [i].perawi.ToLower ();
+		//MENCARI SETIAP DATA DARI DATABASE
+		foreach (var data in db.hadisList) {
+			string dbtitle = data.title.ToLower ();
+			string rawi = data.perawi.ToLower ();
 
-			if ((dbtitle.Contains(inputtext) || rawi.Contains(inputtext)) && inputtext!= "") {
-
-				TagManager.instance.tittleCount++;
+			if ((dbtitle.Contains (inputtext) || rawi.Contains (inputtext)) && inputtext != "") {
+				
+				ListScroll.instance.tittleCount++;
 				GameObject temp = Instantiate(item, Vector2.zero, Quaternion.identity) as GameObject;
 				temp.transform.SetParent(scroller);
 				temp.transform.GetComponent<RectTransform>().localScale = Vector3.one;
 
-				db.tempList.Add (db.hadisList [i]);
-
+				db.tempList.Add (data);
 				ItemList il = temp.GetComponent<ItemList> ();
-				il.tittle.text = db.hadisList [i].title;
-				il.note.text = db.hadisList [i].perawi;
+				il.tittle.text = data.title;
+				il.note.text = data.perawi;
 				il.id = count;
 				count++;
-
-			} else {
-				print ("not found");
 			}
 		}
-		TagManager.instance.ChangePosScroller ();
+
+		ListScroll.instance.ChangePosScroller ();
 		listhadis.SetActive (true);
 
-		if (TagManager.instance.tittleCount <= 0)
+		if (ListScroll.instance.tittleCount <= 0)
 			notfound.SetActive (true);
 		else
 			notfound.SetActive (false);

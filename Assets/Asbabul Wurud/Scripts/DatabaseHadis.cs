@@ -7,6 +7,9 @@ using Firebase.Database;
 using Firebase.Unity.Editor;
 using System;
 
+//====================================================BUAT CLASS UNTUK LIST DATABASE
+
+//=========================MENAMPILKAN LIST PADA INSPECTOR
 [System.Serializable]
 public class Hadis {
 	//public int id;
@@ -35,10 +38,9 @@ public class Hadis {
 		this.url_ayat = dict ["url_ayat"].ToString ();
 	}
 }
+//================================================================================//
 
 public class DatabaseHadis : MonoBehaviour {
-
-	public static DatabaseHadis instance;
 
 	public GameObject menu, req;
 
@@ -49,24 +51,17 @@ public class DatabaseHadis : MonoBehaviour {
 
 
 	void Awake() {
-		instance = this;
 
-		//FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://asbabul-wurud.firebaseio.com/");
 		FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://hadis-c469a.firebaseio.com/");
 		baseRef = FirebaseDatabase.DefaultInstance.RootReference;
 
+		//=======================================HAPUS DATABASE
 		hadisList.Clear ();
 
+		//=======================================ISI LIST HADIS DENGAN DATA DARI FIREBASE
 		GetHaidis (result => {
 			hadisList = result;
-			Debug.Log(hadisList[0].kategori);
 		});
-	}
-
-	void Update () {
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			
-		}
 	}
 
 	public void GetHaidis(Action<List<Hadis>> completionBlock) {
@@ -83,6 +78,7 @@ public class DatabaseHadis : MonoBehaviour {
 
 				DataSnapshot hadis = task.Result;
 
+				//=========== PERULANGAN DATA DARI HADISNODE MELALUI IDICTIONARY
 				foreach(DataSnapshot hadisNode in hadis.Children){
 					var hadisDict = (IDictionary<string, object>)hadisNode.Value;
 					Hadis newHadis = new Hadis(hadisDict);

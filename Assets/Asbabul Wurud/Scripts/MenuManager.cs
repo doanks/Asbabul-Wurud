@@ -15,10 +15,7 @@ public class MenuManager : MonoBehaviour {
 	public RectTransform hadisRt;
 	public Text teksTitle;
 	public Text teksBody;
-//	public TextMeshProUGUI tmBody;
 	public Image teksImage;
-
-	[Header("disable this")]
 	public GameObject[] panel;
 
 	private bool tagShow = true;
@@ -27,16 +24,8 @@ public class MenuManager : MonoBehaviour {
 
 	void Awake () {
 		instance = this;
+		//===============MENCARI OBJEK DENGAN KOMPONEN/SCRIPT "DatabaseHadis"
 		dbase = FindObjectOfType<DatabaseHadis> ();
-	}
-//
-//	void Start () {
-//		Vector2 tmHeight = tmBody.GetRenderedValues( (tmBody.text);
-//		print (tmHeight);
-//	}
-
-	void Update () {
-		//print("fps: " + 1f/Time.deltaTime);
 	}
 
 	public void ChangeHeader (string ht) {
@@ -45,7 +34,8 @@ public class MenuManager : MonoBehaviour {
 
 	bool triggerAnim;
 	public void ButtonMenu () {
-		
+
+		//SUPAYA BUTTON MENU TIDAK RUSAK
 		if (!triggerAnim) {
 			triggerAnim = true;
 			StartCoroutine (DelayAnim ());
@@ -55,8 +45,11 @@ public class MenuManager : MonoBehaviour {
 	IEnumerator DelayAnim () {
 		fade.SetActive (tagShow);
 		for (int i = 0; i < btnAnim.Length; i++){
+			//JALANKAN ANIMASI BUTTON
 			btnAnim[i].SetBool ("show", tagShow);
-			yield return new WaitForSeconds (0.05f);
+
+			//JARAK WAKTU MUNCUL BUTTON
+			yield return new WaitForSeconds (0.01f);
 		}
 		tagShow = !tagShow;
 		triggerAnim = false;
@@ -73,7 +66,7 @@ public class MenuManager : MonoBehaviour {
 
 	IEnumerator GetImageDatabase (int id, string url) {
 
-		//yield return null;
+		//MENGAMBIL GAMBAR UNTUK AYAT
 		WWW www = new WWW(url);
 		yield return www;
 		teksImage.sprite = Sprite.Create (www.texture, new Rect (0, 0, www.texture.width, www.texture.height), new Vector2 (0, 0));
@@ -96,11 +89,11 @@ public class MenuManager : MonoBehaviour {
 		TextGenerator tg = new TextGenerator ();
 		TextGenerationSettings tgs = teksBody.GetGenerationSettings (teksBody.gameObject.GetComponent<RectTransform>().rect.size);
 		float textHeight = tg.GetPreferredHeight (teksBody.text, tgs) + heigh + 200;
-
 		hadisRt.sizeDelta = new Vector2(0, textHeight);
 		float changePos = -(textHeight - 800) / 2;
 		hadisRt.localPosition = new Vector2 (0, changePos);
 
+		//MENAMPILKAN KONTEN
 		contentSuccess.SetActive (true);
 	}
 
